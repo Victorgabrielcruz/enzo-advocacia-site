@@ -29,7 +29,7 @@ const Hero = () => {
           </h1>
 
           <p className="description">
-            Especialista em Direito <strong>Criminal, Cível e Trabalhista</strong>.
+            Especialista em Direito <strong>Criminal, Cívil e Trabalhista</strong>.
             Atuação estratégica com foco na proteção dos seus direitos e resultados concretos.
           </p>
 
