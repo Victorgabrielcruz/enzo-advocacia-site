@@ -1,0 +1,190 @@
+/* --- CONFIGURAÇÕES GERAIS --- */
+.hero {
+  background: radial-gradient(circle at 70% 30%, #252525 0%, #0a0a0a 100%);
+  padding: 140px 20px 100px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- LADO ESQUERDO: TEXTO --- */
+.badge-container {
+  margin-bottom: 24px;
+}
+
+.badge {
+  background: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #D4AF37, #F1D592, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.description {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 550px;
+  margin-bottom: 40px;
+}
+
+/* --- BOTÕES --- */
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.primaryBtn, .secondaryBtn {
+  padding: 18px 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.primaryBtn {
+  background: #D4AF37;
+  color: #000;
+}
+
+.primaryBtn:hover {
+  background: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid #D4AF37;
+}
+
+.secondaryBtn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+}
+
+/* --- LADO DIREITO: IMAGEM --- */
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.imageContainer {
+  position: relative;
+  z-index: 1;
+  display: block !important; /* Garante que não herde display: none */
+}
+
+.profileImg {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+  /* Suaviza a base da imagem */
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.goldFrame {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #D4AF37;
+  z-index: 0;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 1024px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description { margin: 0 auto 30px; }
+  .actions { justify-content: center; }
+
+  .imageWrapper {
+    order: -1; /* Foto no topo no mobile */
+    margin-bottom: 20px;
+  }
+
+  .profileImg {
+    max-width: 280px; /* Reduz tamanho para caber no celular */
+  }
+
+  .goldFrame {
+    display: none; /* Evita erros de alinhamento no mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 16px 50px;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
+    padding: 15px;
+  }
+
+  /* FORÇAR EXIBIÇÃO CASO HAJA HERANÇA */
+  .imageContainer, .imageWrapper {
+    display: flex !important;
+  }
+}

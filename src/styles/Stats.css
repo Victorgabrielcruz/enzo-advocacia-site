@@ -1,0 +1,136 @@
+/* ==========================================================================
+   ANIMAÇÕES
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   ESTATÍSTICAS - SECTION
+   ========================================================================== */
+.statsSection {
+  background: #111;
+  padding: 80px 20px;
+  position: relative;
+  border-top: 1px solid rgba(212, 175, 55, 0.08);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+  overflow: hidden; /* Evita scroll indesejado durante a animação */
+}
+
+/* CONTAINER */
+.statsSection .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* CARD */
+.statCard {
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  /* Configuração da Animação de Entrada */
+  animation: fadeInUp 0.8s ease backwards;
+}
+
+/* DELAYS PARA O EFEITO CASCATA (Cada card entra em um tempo) */
+.statCard:nth-child(1) { animation-delay: 0.1s; }
+.statCard:nth-child(2) { animation-delay: 0.2s; }
+.statCard:nth-child(3) { animation-delay: 0.3s; }
+.statCard:nth-child(4) { animation-delay: 0.4s; }
+
+/* LINHAS DIVISÓRIAS (Desktop) */
+.statCard:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 1px;
+  height: 60%;
+  background: rgba(212, 175, 55, 0.12);
+}
+
+/* HOVER EFFECT */
+.statCard:hover {
+  transform: translateY(-6px);
+  background: rgba(212, 175, 55, 0.02); /* Leve brilho no fundo ao passar o mouse */
+}
+
+/* NÚMERO / VALOR */
+.value {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: #D4AF37;
+  margin-bottom: 10px;
+  display: block;
+  line-height: 1.2;
+}
+
+/* TEXTO / DESCRIÇÃO */
+.label {
+  color: #8a8a8a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE - TABLET (Max 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .statsSection .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statCard {
+    padding: 35px 20px;
+  }
+
+  .statCard::after {
+    display: none;
+  }
+
+  /* Divisória apenas entre as colunas no tablet */
+  .statCard:nth-child(odd)::after {
+    display: block;
+    height: 50%;
+    top: 25%;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE - MOBILE (Max 520px)
+   ========================================================================== */
+@media (max-width: 520px) {
+  .statsSection {
+    padding: 60px 16px;
+  }
+
+  .statsSection .container {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    padding: 28px 10px;
+  }
+
+  .statCard::after {
+    display: none;
+  }
+
+  /* Borda inferior para separar cards no mobile */
+  .statCard:not(:last-child) {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  }
+}
